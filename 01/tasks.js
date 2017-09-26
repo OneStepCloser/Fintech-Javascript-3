@@ -14,6 +14,7 @@ function getMinMax(string) {
         if (maximum < +result[i])
             maximum = +result[i];
     }
+    
     return {min: minimum, max: maximum};
 }
 
