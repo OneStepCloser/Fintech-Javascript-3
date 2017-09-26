@@ -26,7 +26,7 @@ function getMinMax(string) {
  */
 function fibonacciSimple(x) {
     if (x < 0) return undefined;
-    
+
     return (x === 0) || (x === 1) ? x : fibonacciSimple(x - 2) + fibonacciSimple(x - 1);
 }
 
