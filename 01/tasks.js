@@ -5,17 +5,20 @@
  * '1 и 6.45, -2, но 8, а затем 15, то есть 2.7 и -1028' => { min: -1028, max: 15 }
  */
 function getMinMax(string) {
-    let result = string.match(/-?\d+(.\d+)?/g);
-    let minimum = Number.POSITIVE_INFINITY, maximum = Number.NEGATIVE_INFINITY;
+  const result = string.match(/-?\d+(.\d+)?/g);
+  let minimum = Number.POSITIVE_INFINITY;
+  let maximum = Number.NEGATIVE_INFINITY;
 
-    for (let i = 0; i < result.length; ++i) {
-        if (minimum > +result[i])
-            minimum = +result[i];
-        if (maximum < +result[i])
-            maximum = +result[i];
+  for (let i = 0; i < result.length; ++i) {
+    if (minimum > +result[i]) {
+      minimum = +result[i];
     }
-    
-    return {min: minimum, max: maximum};
+    if (maximum < +result[i]) {
+      maximum = +result[i];
+    }
+  }
+
+  return { min: minimum, max: maximum };
 }
 
 /* ============================================= */
@@ -26,9 +29,11 @@ function getMinMax(string) {
  * @return {number} число под номером х
  */
 function fibonacciSimple(x) {
-    if (x < 0) return undefined;
+  if (x < 0) {
+    return null;
+  }
 
-    return (x === 0) || (x === 1) ? x : fibonacciSimple(x - 2) + fibonacciSimple(x - 1);
+  return (x === 0) || (x === 1) ? x : fibonacciSimple(x - 2) + fibonacciSimple(x - 1);
 }
 
 /* ============================================= */
@@ -40,20 +45,22 @@ function fibonacciSimple(x) {
  * @return {number} число под номером х
  */
 function fibonacciWithCache(x) {
-    if (x < 0) return undefined;
+  if (x < 0) {
+    return null;
+  }
 
-    let result;
+  if (!fibonacciWithCache.cache) {
+    fibonacciWithCache.cache = {};
+  }
 
-    if (fibonacciWithCache.cache === undefined)
-        fibonacciWithCache.cache = {};
+  if (fibonacciWithCache.cache[x]) {
+    return fibonacciWithCache.cache[x];
+  }
 
-    if (fibonacciWithCache.cache[x])
-        return fibonacciWithCache.cache[x];
-    else {
-        result = (x === 0) || (x === 1) ? x : fibonacciWithCache(x - 2) + fibonacciWithCache(x - 1);
-        fibonacciWithCache.cache[x] = result;
-        return result;
-    }
+  const result = (x === 0) || (x === 1) ? x : fibonacciWithCache(x - 2) + fibonacciWithCache(x - 1);
+
+  fibonacciWithCache.cache[x] = result;
+  return result;
 }
 
 /* ============================================= */
@@ -74,54 +81,58 @@ function fibonacciWithCache(x) {
  * @return {string}
  */
 function printNumbers(max, cols) {
-    let result = '';
+  let result = '';
 
-    let rows = Math.ceil((max + 1) / cols);
+  const rows = Math.ceil((max + 1) / cols);
 
-    if (max + 1 < cols)
-        cols = max + 1;
+  if (max + 1 < cols) {
+    cols = max + 1;
+  }
 
-    for (let i = 0; i < rows; ++i) {
-        for (let j = 0; j < cols && j * rows + i <= max; ++j) {
-            let current = j * rows + i;
-            result += (current < 10 ? " " : "") + current + (j === cols - 1 ? "" : " ");
-        }
-        if (i != rows - 1)
-            result += "\n";
+  for (let i = 0; i < rows; ++i) {
+    for (let j = 0; j < cols && j * rows + i <= max; ++j) {
+      const current = j * rows + i;
+
+      result += (current < 10 ? ' ' : '') + current + (j === cols - 1 ? '' : ' ');
     }
-    console.log(result);
-    return result;
+    if (i !== rows - 1) {
+      result += '\n';
+    }
+  }
+  console.log(result);
+  return result;
 }
 
 /* ============================================= */
 
 /**
  * Реализуйте RLE-сжатие: AAAB -> A3B, BCCDDDEEEE -> BC2D3E4
- * @param  {string} value
+ * @param  {string} input
  * @return {string}
  */
 function rle(input) {
-    let result = '';
-    let currentChar, currentNumber = 1;
+  let result = '';
+  let currentChar;
+  let currentNumber = 1;
 
-    for (let i = 0; i < input.length; ++i) {
-        currentChar = input[i];
+  for (let i = 0; i < input.length; ++i) {
+    currentChar = input[i];
 
-        if (i !== input.length - 1 && currentChar === input[i + 1])
-            ++currentNumber;
-        else {
-            result += currentNumber === 1 ? currentChar : currentChar + currentNumber;
-            currentNumber = 1;
-        }
+    if (i !== input.length - 1 && currentChar === input[i + 1]) {
+      currentNumber += 1;
+    } else {
+      result += currentNumber === 1 ? currentChar : currentChar + currentNumber;
+      currentNumber = 1;
     }
+  }
 
-    return result;
+  return result;
 }
 
 module.exports = {
-    getMinMax,
-    rle,
-    printNumbers,
-    fibonacciSimple,
-    fibonacciWithCache
+  getMinMax,
+  rle,
+  printNumbers,
+  fibonacciSimple,
+  fibonacciWithCache
 };
