@@ -1,6 +1,10 @@
 {
   "name": "tinkoff_fintech_frontend_3",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/OneStepCloser/Fintech-Javascript-3.git"
+  },
   "description": "Homeworks for frontend part of tinkoff fintech 3 school",
   "main": "index.js",
   "scripts": {
@@ -14,9 +18,12 @@
     "eslint": "^4.6.1",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.3.0",
     "expect.js": "^0.3.1",
     "mocha": "^3.5.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.0"
   }
 }
