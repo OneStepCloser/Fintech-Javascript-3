@@ -3,12 +3,25 @@
  * Доп. задание: предложите несколько вариантов решения.
  */
 function timer(logger = console.log) {
-  for (var i = 0; i < 10; i++) {
+  for (let i = 0; i < 10; i++) { // replacing "var" with "let" allows to create it's own i variable for each loop iteration
     setTimeout(() => {
       logger(i);
     }, 100);
   }
 }
+
+// Another option:
+
+/**function timer(logger = console.log) {
+  for (var i = 0; i < 10; i++) {
+    const currentI = i; // saving the state of i variable each iteration of the loop
+    setTimeout(() => {
+      logger(currentI);
+    }, 100);
+  }
+}
+ **/
+
 
 /*= ============================================ */
 
@@ -20,7 +33,9 @@ function timer(logger = console.log) {
  * @return {Function} функция с нужным контекстом
  */
 function customBind(func, context, ...args) {
-
+  return function(...rest) {
+    return func.apply(context, args.concat(rest));
+  };
 }
 
 /*= ============================================ */
@@ -33,7 +48,21 @@ function customBind(func, context, ...args) {
  * sum :: void -> Number
  */
 function sum(x) {
-  return 0;
+
+  if (!sum.result) {
+    sum.result = 0;
+  }
+
+  if (arguments.length === 0) {
+    let temp = sum.result;
+    sum.result = 0;
+    return temp;
+  }
+
+  else {
+    sum.result += x;
+    return sum;
+  }
 }
 
 /*= ============================================ */
@@ -45,7 +74,40 @@ function sum(x) {
  * @return {boolean}
  */
 function anagram(first, second) {
-  return false;
+  if (first.length !== second.length)
+    return false;
+
+  let firstCounter = {};
+  let secondCounter = {};
+
+  for (let i = 0; i < first.length; ++i) {
+
+    let currentCharacterFromFirst = first[i];
+    if (!firstCounter[currentCharacterFromFirst])
+      firstCounter[currentCharacterFromFirst] = 1;
+    else
+      firstCounter[currentCharacterFromFirst] += 1;
+
+    let currentCharacterFromSecond = second[i];
+    if (!secondCounter[currentCharacterFromSecond])
+      secondCounter[currentCharacterFromSecond] = 1;
+    else
+      secondCounter[currentCharacterFromSecond] += 1;
+  }
+
+  let firstCounterKeys = Object.keys(firstCounter);
+  let secondCounterKeys = Object.keys(secondCounter);
+
+  if (firstCounterKeys.length !== secondCounterKeys.length)
+    return false;
+
+  for (let i = 0; i < firstCounterKeys.length; ++i) {
+    let currentCharacter = firstCounterKeys[i];
+    if (firstCounter[currentCharacter] !== secondCounter[currentCharacter])
+      return false;
+  }
+
+  return true;
 }
 
 /*= ============================================ */
@@ -57,7 +119,16 @@ function anagram(first, second) {
  * @return {Array<number>} массив уникальных значений, отсортированный по возрастанию
  */
 function getUnique(arr) {
-  return [];
+  let itemSet = {};
+
+  for (let i = 0; i < arr.length; ++i) {
+    let item = arr[i];
+    itemSet[item] = item;
+  }
+
+  return Object.keys(itemSet)
+    .map((key) => itemSet[key])
+    .sort((a, b) => a - b);
 }
 
 /**
@@ -67,7 +138,40 @@ function getUnique(arr) {
  * @return {Array<number>} массив уникальных значений, отсортированный по возрастанию
  */
 function getIntersection(first, second) {
-  return [];
+
+  // Case with repetitive items is considered as well
+
+  let firstCounter = {};
+  let secondCounter = {};
+
+  for (let i = 0; i < first.length; ++i) {
+    let item = first[i];
+    if (!firstCounter[item])
+      firstCounter[item] = 1;
+    else
+      firstCounter[item] += 1;
+  }
+
+  for (let i = 0; i < second.length; ++i) {
+    let item = second[i];
+    if (!secondCounter[item])
+      secondCounter[item] = 1;
+    else
+      secondCounter[item] += 1;
+  }
+
+  let extractItem = key => {
+    if (firstCounter[key] > 0 && secondCounter[key] > 0) {
+      firstCounter[key] -= 1;
+      secondCounter[key] -= 1;
+      return true;
+    }
+    return false;
+  }
+
+  return first
+    .filter(keyInt => extractItem(keyInt.toString()))
+    .sort((a, b) => a - b);
 }
 
 /* ============================================= */
@@ -86,7 +190,20 @@ function getIntersection(first, second) {
  * @return {boolean}
  */
 function isIsomorphic(left, right) {
+  if (left.length !== right.length)
+    return false;
 
+  let inappropriateDistance = false;
+
+  for (let i = 0; i < left.length; ++i) {
+    if (left[i] !== right[i]) {
+      if (inappropriateDistance)
+        return false;
+      inappropriateDistance = true;
+    }
+  }
+
+  return true;
 }
 
 module.exports = {
