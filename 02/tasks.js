@@ -12,7 +12,7 @@ function timer(logger = console.log) {
 
 // Another option:
 
-/**function timer(logger = console.log) {
+/* function timer(logger = console.log) {
   for (var i = 0; i < 10; i++) {
     const currentI = i; // saving the state of i variable each iteration of the loop
     setTimeout(() => {
@@ -20,7 +20,7 @@ function timer(logger = console.log) {
     }, 100);
   }
 }
- **/
+ */
 
 
 /*= ============================================ */
@@ -48,21 +48,18 @@ function customBind(func, context, ...args) {
  * sum :: void -> Number
  */
 function sum(x) {
-
   if (!sum.result) {
     sum.result = 0;
   }
-
   if (arguments.length === 0) {
-    let temp = sum.result;
+    const temp = sum.result;
+
     sum.result = 0;
     return temp;
   }
 
-  else {
-    sum.result += x;
-    return sum;
-  }
+  sum.result += x;
+  return sum;
 }
 
 /*= ============================================ */
@@ -74,40 +71,27 @@ function sum(x) {
  * @return {boolean}
  */
 function anagram(first, second) {
-  if (first.length !== second.length)
+  if (first.length !== second.length) {
     return false;
-
-  let firstCounter = {};
-  let secondCounter = {};
-
-  for (let i = 0; i < first.length; ++i) {
-
-    let currentCharacterFromFirst = first[i];
-    if (!firstCounter[currentCharacterFromFirst])
-      firstCounter[currentCharacterFromFirst] = 1;
-    else
-      firstCounter[currentCharacterFromFirst] += 1;
-
-    let currentCharacterFromSecond = second[i];
-    if (!secondCounter[currentCharacterFromSecond])
-      secondCounter[currentCharacterFromSecond] = 1;
-    else
-      secondCounter[currentCharacterFromSecond] += 1;
   }
 
-  let firstCounterKeys = Object.keys(firstCounter);
-  let secondCounterKeys = Object.keys(secondCounter);
+  function countChars(str) {
+    const counter = {};
 
-  if (firstCounterKeys.length !== secondCounterKeys.length)
-    return false;
-
-  for (let i = 0; i < firstCounterKeys.length; ++i) {
-    let currentCharacter = firstCounterKeys[i];
-    if (firstCounter[currentCharacter] !== secondCounter[currentCharacter])
-      return false;
+    str.split('').forEach(char => {
+      counter[char] = counter[char] ? counter[char] + 1 : 1;
+    });
+    return counter;
   }
 
-  return true;
+  const firstCounter = countChars(first);
+  const secondCounter = countChars(second);
+  const firstCounterChars = Object.keys(firstCounter);
+
+  if (firstCounterChars.length !== Object.keys(secondCounter).length) {
+    return false;
+  }
+  return firstCounterChars.every(char => firstCounter[char] === secondCounter[char]);
 }
 
 /*= ============================================ */
@@ -115,62 +99,53 @@ function anagram(first, second) {
 /**
  * Сократите массив до набора уникальных значений
  * [1,1, 2, 6, 3, 6, 2] → [1, 2, 3, 6]
- * @param {Array<number>} исходный массив
+ * @param {Array<number>} arr исходный массив
  * @return {Array<number>} массив уникальных значений, отсортированный по возрастанию
  */
 function getUnique(arr) {
-  let itemSet = {};
+  const itemSet = {};
 
-  for (let i = 0; i < arr.length; ++i) {
-    let item = arr[i];
+  for (const item of arr) {
     itemSet[item] = item;
   }
 
   return Object.keys(itemSet)
-    .map((key) => itemSet[key])
+    .map(key => itemSet[key])
     .sort((a, b) => a - b);
 }
 
 /**
  * Найдите пересечение двух массивов
  * [1, 3, 5, 7, 9] и [1, 2, 3, 4] → [1, 3]
- * @param {Array<number>, Array<number>} first, second исходные массивы
+ * @param {Array<number>, Array<number>} first исходный массив
+ * @param {Array<number>, Array<number>} second второй исходный массив
  * @return {Array<number>} массив уникальных значений, отсортированный по возрастанию
  */
 function getIntersection(first, second) {
-
   // Case with repetitive items is considered as well
+  function countNumbers(arr) {
+    const counter = {};
 
-  let firstCounter = {};
-  let secondCounter = {};
-
-  for (let i = 0; i < first.length; ++i) {
-    let item = first[i];
-    if (!firstCounter[item])
-      firstCounter[item] = 1;
-    else
-      firstCounter[item] += 1;
+    arr.forEach(char => {
+      counter[char] = counter[char] ? counter[char] + 1 : 1;
+    });
+    return counter;
   }
 
-  for (let i = 0; i < second.length; ++i) {
-    let item = second[i];
-    if (!secondCounter[item])
-      secondCounter[item] = 1;
-    else
-      secondCounter[item] += 1;
-  }
+  const firstCounter = countNumbers(first);
+  const secondCounter = countNumbers(second);
 
-  let extractItem = key => {
+  const extractItem = key => {
     if (firstCounter[key] > 0 && secondCounter[key] > 0) {
       firstCounter[key] -= 1;
       secondCounter[key] -= 1;
       return true;
     }
     return false;
-  }
+  };
 
   return first
-    .filter(keyInt => extractItem(keyInt.toString()))
+    .filter(num => extractItem(num.toString()))
     .sort((a, b) => a - b);
 }
 
@@ -190,17 +165,19 @@ function getIntersection(first, second) {
  * @return {boolean}
  */
 function isIsomorphic(left, right) {
-  if (left.length !== right.length)
+  if (left.length !== right.length) {
     return false;
+  }
 
   let inappropriateDistance = false;
 
   for (let i = 0; i < left.length; ++i) {
-    if (left[i] !== right[i]) {
-      if (inappropriateDistance)
-        return false;
-      inappropriateDistance = true;
+    if (left[i] === right[i]) {
+      continue;
+    } else if (inappropriateDistance) {
+      return false;
     }
+    inappropriateDistance = true;
   }
 
   return true;
