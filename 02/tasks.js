@@ -126,7 +126,9 @@ function getUnique(arr) {
     itemSet[item] = item;
   }
 
-  return Object.keys(itemSet).map((key) => itemSet[key]).sort((a, b) => a - b);
+  return Object.keys(itemSet)
+    .map((key) => itemSet[key])
+    .sort((a, b) => a - b);
 }
 
 /**
@@ -137,11 +139,39 @@ function getUnique(arr) {
  */
 function getIntersection(first, second) {
 
-  let firstSet = getUnique(first);
-  let secondSet = getUnique(second);
+  // Case with repetitive items is considered as well
 
-  return firstSet.filter((item1) => secondSet.some(item2 => item1 === item2));
-  
+  let firstCounter = {};
+  let secondCounter = {};
+
+  for (let i = 0; i < first.length; ++i) {
+    let item = first[i];
+    if (!firstCounter[item])
+      firstCounter[item] = 1;
+    else
+      firstCounter[item] += 1;
+  }
+
+  for (let i = 0; i < second.length; ++i) {
+    let item = second[i];
+    if (!secondCounter[item])
+      secondCounter[item] = 1;
+    else
+      secondCounter[item] += 1;
+  }
+
+  let extractItem = key => {
+    if (firstCounter[key] > 0 && secondCounter[key] > 0) {
+      firstCounter[key] -= 1;
+      secondCounter[key] -= 1;
+      return true;
+    }
+    return false;
+  }
+
+  return first
+    .filter(keyInt => extractItem(keyInt.toString()))
+    .sort((a, b) => a - b);
 }
 
 /* ============================================= */
