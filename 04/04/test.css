@@ -1,10 +1,14 @@
 @import url(//fonts.googleapis.com/css?family=Roboto);
 @import url(//fonts.googleapis.com/css?family=Roboto+Condensed);
 
-body {
+* {
   font-family: "Roboto", sans-serif;
-  width: 960px;
+}
+
+.mainContainer {
+  max-width: 960px;
   margin: 10px auto;
+  padding: 20px;
 }
 
 body > * {
