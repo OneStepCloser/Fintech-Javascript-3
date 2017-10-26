@@ -23,7 +23,7 @@ body {
   background-color: #eef2f7;
   padding: 23px 18px 23px 20px;
   box-sizing: border-box;
-  border: none;
+  border: solid 1px transparent;
   border-radius: 6px;
   outline: none;
 }
