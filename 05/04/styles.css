@@ -4,8 +4,6 @@ body {
   min-width: 1080px;
   font-family: Roboto, sans-serif;
   font-weight: 400;
-
-  --tinkoff-blue: #74a3c7;
 }
 
 .container {
@@ -19,7 +17,7 @@ body {
   margin-bottom: 12px;
 }
 
-.data-field > input {
+.data-field-input {
   width: 540px;
   height: 66px;
   background-color: #eef2f7;
@@ -30,20 +28,20 @@ body {
   outline: none;
 }
 
-.data-field > .arrow + input {
+.arrow-input {
   padding-right: 46px;
 }
 
-.data-field > .question + input {
+.question-input {
   padding-right: 60px;
 }
 
-.data-field > input:focus {
+.data-field-input:focus {
   background: white;
-  border: solid 1px var(--tinkoff-blue);
+  border: solid 1px #74a3c7;
 }
 
-.data-field > .arrow {
+.arrow {
   position: absolute;
   right: 18px;
   top: calc(50% - 3px);
@@ -52,7 +50,7 @@ body {
   cursor: pointer;
 }
 
-.data-field > .question {
+.question {
   position: absolute;
   right: 18px;
   top: calc(50% - 12px);
@@ -62,7 +60,7 @@ body {
   cursor: pointer;
 }
 
-.data-field > .question > .info {
+.info {
   position: absolute;
   right: 42px;
   top: -40px;
@@ -78,40 +76,38 @@ body {
   box-sizing: border-box;
 }
 
-.data-field > .question:hover > .info {
+.question:hover > .info {
   display: inline;
 }
 
 ::-webkit-input-placeholder {
-  color: var(--tinkoff-blue);
+  color: #74a3c7;
   opacity: 0.6;
 }
 
 ::-moz-placeholder {
-  color: var(--tinkoff-blue);
+  color: #74a3c7;
   opacity: 0.6;
 }
 
 /* Firefox 19+ */
 :-moz-placeholder {
-  color: var(--tinkoff-blue);
+  color: #74a3c7;
   opacity: 0.6;
 }
 
 /* Firefox 18- */
 :-ms-input-placeholder {
-  color: var(--tinkoff-blue);
+  color: #74a3c7;
   opacity: 0.6;
 }
 
 .choose {
-  margin-left: auto;
-  margin-right: auto;
   font-size: 21px;
   font-weight: 300;
   text-align: center;
   color: #333;
-  margin-top: 39px;
+  margin: 39px auto 0;
 }
 
 .choice-wrapper {
@@ -148,19 +144,17 @@ body {
   background-image: url("unselected.svg");
 }
 
-.choice-item.checked > .marker {
+.checked > .marker {
   background-image: url("selected.svg");
 }
 
-.choice-item.checked > .choice-item-title {
+.checked > .choice-item-title {
   color: #333;
   opacity: 1;
 }
 
 .send-button {
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 49px;
+  margin: 49px auto 0;
   width: 258px;
   height: 66px;
   border-radius: 6px;
