@@ -6,19 +6,19 @@
  */
 function getMinMax(string) {
   const result = string.match(/-?\d+(.\d+)?/g);
-  let minimum = Number.POSITIVE_INFINITY;
-  let maximum = Number.NEGATIVE_INFINITY;
+  let min = Number.POSITIVE_INFINITY;
+  let max = Number.NEGATIVE_INFINITY;
 
-  for (let i = 0; i < result.length; ++i) {
-    if (minimum > +result[i]) {
-      minimum = +result[i];
+  result.map(numAsString => +numAsString).forEach(number => {
+    if (min > number) {
+      min = number;
     }
-    if (maximum < +result[i]) {
-      maximum = +result[i];
+    if (max < number) {
+      max = number;
     }
-  }
+  });
 
-  return { min: minimum, max: maximum };
+  return { min, max };
 }
 
 /* ============================================= */
@@ -53,14 +53,11 @@ function fibonacciWithCache(x) {
     fibonacciWithCache.cache = {};
   }
 
-  if (fibonacciWithCache.cache[x]) {
-    return fibonacciWithCache.cache[x];
+  if (!fibonacciWithCache.cache[x]) {
+    fibonacciWithCache.cache[x] = (x === 0) || (x === 1) ? x : fibonacciWithCache(x - 2) + fibonacciWithCache(x - 1);
   }
 
-  const result = (x === 0) || (x === 1) ? x : fibonacciWithCache(x - 2) + fibonacciWithCache(x - 1);
-
-  fibonacciWithCache.cache[x] = result;
-  return result;
+  return fibonacciWithCache.cache[x];
 }
 
 /* ============================================= */
