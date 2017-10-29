@@ -3,7 +3,7 @@
  * Доп. задание: предложите несколько вариантов решения.
  */
 function timer(logger = console.log) {
-  for (let i = 0; i < 10; i++) { // replacing "var" with "let" allows to create it's own i variable for each loop iteration
+  for (let i = 0; i < 10; i++) { // replacing "var" with "let" allows to create its own i variable for each loop iteration
     setTimeout(() => {
       logger(i);
     }, 100);
