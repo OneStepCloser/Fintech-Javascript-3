@@ -13,6 +13,7 @@
 
 body {
   font-family: "Roboto", sans-serif;
+  min-width: 300px;
 }
 
 .header {
@@ -275,6 +276,16 @@ body {
       &__cards {
         transform: scale(0.65);
         margin: -11px -137px 0 -35px;
+        float: right;
+      }
+    }
+  }
+
+  @media (min-width: 520px) and (max-width: 640px) {
+    &__image-wrapper {
+      &__cards {
+        transform: scale(1);
+        margin: 30px -64px 0 -35px;
         float: right;
       }
     }
