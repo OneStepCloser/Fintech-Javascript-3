@@ -15,6 +15,12 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+@media screen and (max-device-width: 640px) {
+  body {
+    min-width: 100%;
+  }
+}
+
 .header {
   height: 95px;
   background-color: @main-background-color;
@@ -30,11 +36,60 @@ body {
     line-height: 1;
     color: @dark-text-color;
 
+    &__logo-mobile {
+      display: none;
+    }
+
+    @media screen and (max-device-width: 640px) {
+      &__logo-mobile {
+        display: block;
+        width: 50px;
+        height: 44px;
+      }
+    }
+
+    @media screen and (max-device-width: 640px) {
+      &__telephone {
+        font-size: 17px;
+      }
+    }
+
+    &__hamburger {
+      display: none;
+    }
+
+    @media screen and (max-device-width: 640px) {
+      &__hamburger {
+        display: block;
+        width: 25px;
+        height: 20px;
+      }
+    }
+
     &__logo {
       height: 100%;
       width: auto;
       cursor: pointer;
+      display: block;
     }
+
+    @media screen and (max-device-width: 640px) {
+      &__logo {
+        display: none;
+      }
+    }
+  }
+
+  @media screen and (max-device-width: 640px) {
+    &__wrapper {
+      width: 88%;
+    }
+  }
+}
+
+@media screen and (max-device-width: 640px) {
+  .header {
+    height: 72px;
   }
 }
 
@@ -71,7 +126,7 @@ body {
 
     &__underline {
       background-color: @color-accent;
-      width: 0%;
+      width: 0;
       height: 3px;
       position: relative;
       top: -3px;
@@ -86,6 +141,12 @@ body {
   }
 }
 
+@media screen and (max-device-width: 640px) {
+  .menu {
+    display: none;
+  }
+}
+
 .banner {
   position: relative;
   width: 100%;
@@ -94,6 +155,7 @@ body {
   background-image: linear-gradient(to right, #1489e7, #003e82);
   display: flex;
   justify-content: flex-start;
+  overflow: hidden;
 
   &__title-wrapper {
     height: 100%;
@@ -117,7 +179,7 @@ body {
     }
 
     &__button {
-      display: inline-block;
+      display: block;
       border-radius: @main-border-radius;
       background-color: @color-accent;
       padding: 19px 35px;
@@ -139,6 +201,36 @@ body {
     }
   }
 
+  @media screen and (max-device-width: 640px) {
+    &__title-wrapper {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+
+      &__main-title {
+        font-size: 30px;
+        text-align: center;
+        margin: 26px auto 0;
+        width: 74%;
+      }
+
+      &__annotation {
+        font-size: 17px;
+        line-height: 1.41;
+        text-align: center;
+        margin: 7px auto 0;
+        width: 78%;
+      }
+
+      &__button {
+        width: 78%;
+        margin: 141px auto 0;
+      }
+    }
+  }
+
   &__image-wrapper {
     width: 50%;
     height: 100%;
@@ -150,6 +242,32 @@ body {
       float: right;
     }
   }
+
+  @media screen and (max-device-width: 640px) {
+    &__image-wrapper {
+      width: 100%;
+      position: absolute;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+      z-index: 1;
+
+      &__cards {
+        transform: scale(0.65);
+        margin: -11px -137px 0 -35px;
+        float: right;
+      }
+    }
+  }
+}
+
+@media screen and (max-device-width: 640px) {
+  .banner {
+    min-width: 100%;
+    height: 390px;
+    display: block;
+    background-image: linear-gradient(179deg, #168de7, #00428a);
+  }
 }
 
 .main-container {
@@ -160,13 +278,27 @@ body {
   margin-left: auto;
   margin-right: auto;
 
-  &__header {
+  &__header,
+  &__header_small {
     font-size: 50px;
     width: 100%;
     font-weight: @main-font-weight;
     text-align: center;
     color: @dark-text-color;
     margin: 82px auto 0;
+  }
+
+  @media screen and (max-device-width: 640px) {
+    &__header {
+      font-size: 30px;
+      line-height: 1.2;
+      margin: 29px auto 0;
+    }
+
+    &__header_small {
+      font-size: 24px;
+      margin: 0 auto;
+    }
   }
 
   &__tags-wrapper {
@@ -203,6 +335,7 @@ body {
         &__inside-tag-text {
           max-height: 2.3em;
           position: relative;
+          word-break: break-all;
 
           &::after {
             content: '';
@@ -232,6 +365,31 @@ body {
       outline: none;
       border: none;
     }
+
+    @media screen and (max-device-width: 640px) {
+      &__tag {
+        font-size: 15px;
+        max-width: 100%;
+
+        &__tag-text {
+          max-width: 199px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-device-width: 640px) {
+    &__tags-wrapper {
+      margin: 24px auto 52px;
+      padding: 18px;
+    }
+  }
+}
+
+@media screen and (max-device-width: 640px) {
+  .main-container {
+    width: 88%;
+    min-width: 88%;
   }
 }
 
@@ -287,6 +445,12 @@ body {
         opacity: 0.6;
         transition-property: top, font-size;
         transition-duration: 0.5s;
+      }
+
+      @media screen and (max-device-width: 640px) {
+        + .fields-container__data-field__label {
+          font-size: 17px;
+        }
       }
 
       &:focus {
@@ -348,17 +512,25 @@ body {
         background-color: white;
         border: solid 1px #dddfe0;
         opacity: 0;
-        //display: none;
+        visibility: hidden;
         font-size: @main-font-size;
         line-height: 1.38;
         color: #9299a2;
         box-sizing: border-box;
-        transition-property: opacity;
+        transition-property: opacity, visibility;
         transition-duration: 0.5s;
+        z-index: 2;
+      }
+
+      @media screen and (max-device-width: 640px) {
+        &__info {
+          width: 200px;
+          top: -58px;
+        }
       }
 
       &:hover > &__info {
-        display: inline;
+        visibility: visible;
         opacity: 1;
       }
     }
@@ -369,6 +541,13 @@ body {
     font-size: @main-font-size;
     margin-top: 11px;
     margin-bottom: 24px;
+  }
+}
+
+@media screen and (max-device-width: 640px) {
+  .fields-container {
+    width: 100%;
+    margin: 26px auto 0;
   }
 }
 
@@ -387,6 +566,7 @@ body {
   margin-left: auto;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 
   &__choice-item {
     width: 258px;
@@ -441,6 +621,19 @@ body {
       }
     }
   }
+
+  @media screen and (max-device-width: 640px) {
+    &__choice-item {
+      width: 100%;
+      margin-bottom: 24px;
+    }
+  }
+}
+
+@media screen and (max-device-width: 640px) {
+  .choice-wrapper {
+    width: 100%;
+  }
 }
 
 .send-button {
@@ -461,3 +654,12 @@ body {
     background-color: #e1c328;
   }
 }
+
+@media screen and (max-device-width: 640px) {
+  .send-button {
+    margin-top: 24px;
+  }
+}
+
+
+
