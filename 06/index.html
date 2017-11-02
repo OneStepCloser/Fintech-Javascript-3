@@ -115,19 +115,26 @@
 
     <div class="fields-container">
         <div class="fields-container__data-field">
-            <img alt="Selector arrow" class="fields-container__data-field__arrow" src="images/arrow.svg">
-            <input id="FIO" class="fields-container__data-field__input fields-container__data-field__input_arrow">
-            <label id="thislabel" for="FIO" class="fields-container__data-field__label">ФИО</label>
+            <div class="fields-container__data-field__arrow"></div>
+            <input id="FIO" class="fields-container__data-field__input fields-container__data-field__input_arrow"
+                   required>
+            <label for="FIO" class="fields-container__data-field__label">ФИО</label>
         </div>
 
-        <!--
+
         <div class="fields-container__data-field">
-            <input class="fields-container__data-field__input fields-container__data-field_arrow-input"
-                   placeholder="Город проживания">
+            <div class="fields-container__data-field__incorrect"></div>
+            <input id="city" class="fields-container__data-field__input fields-container__data-field__input_incorrect">
+            <label for="city" class="fields-container__data-field__label">Город проживания</label>
         </div>
+
+        <div class="fields-container__error-text">Для заполнения этого поля не допустимо использовать буквы латинского
+            алфавита
+        </div>
+
         <div class="fields-container__data-field">
-            <input class="fields-container__data-field__input fields-container__data-field_arrow-input"
-                   placeholder="Мобильный телефон">
+            <input id="telephone" class="fields-container__data-field__input" required>
+            <label for="telephone" class="fields-container__data-field__label">Мобильный телефон</label>
         </div>
         <div class="fields-container__data-field">
             <div class="fields-container__data-field__question">
@@ -135,11 +142,10 @@
                 Ваши данные замаскированы в целях безопасности. Для изменения информации с вами свяжется оператор колл-центра.
             </span>
             </div>
-            <input class="fields-container__data-field__input fields-container__data-field_arrow-input"
-                   placeholder="Электронная почта">
-                   -->
+            <input id="email" class="fields-container__data-field__input fields-container__data-field__input_question" required>
+            <label for="email" class="fields-container__data-field__label">Город проживания</label>
         </div>
-
+    </div>
 
         <h3 class="choose-header">
             Выберите это или другое
