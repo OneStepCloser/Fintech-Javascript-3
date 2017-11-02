@@ -2,7 +2,7 @@
 @color-accent-animation: #e8c929;
 @main-font-size: 13px;
 @main-font-weight: 300;
-@min-body-width: 1080px;
+@max-body-width: 828px;
 @dark-text-color: #333;
 @light-text-color: #fff;
 @main-background-color: #fff;
@@ -11,11 +11,11 @@
 @import url(//fonts.googleapis.com/css?family=Roboto:100,300,400,500);
 
 body {
-  min-width: @min-body-width;
+  //max-width: @max-body-width;
   font-family: "Roboto", sans-serif;
 }
 
-@media screen and (max-device-width: 640px) {
+@media (max-width: 640px) {
   body {
     min-width: 100%;
   }
@@ -26,6 +26,7 @@ body {
   background-color: @main-background-color;
 
   &__wrapper {
+    max-width: @max-body-width;
     width: 76%;
     height: 100%;
     margin: 0 auto;
@@ -40,7 +41,7 @@ body {
       display: none;
     }
 
-    @media screen and (max-device-width: 640px) {
+    @media (max-width: 640px) {
       &__logo-mobile {
         display: block;
         width: 50px;
@@ -48,7 +49,7 @@ body {
       }
     }
 
-    @media screen and (max-device-width: 640px) {
+    @media (max-width: 640px) {
       &__telephone {
         font-size: 17px;
       }
@@ -58,7 +59,7 @@ body {
       display: none;
     }
 
-    @media screen and (max-device-width: 640px) {
+    @media (max-width: 640px) {
       &__hamburger {
         display: block;
         width: 25px;
@@ -67,27 +68,33 @@ body {
     }
 
     &__logo {
-      height: 100%;
+      height: 65px;
       width: auto;
       cursor: pointer;
       display: block;
     }
 
-    @media screen and (max-device-width: 640px) {
+    @media (max-width: 640px) {
       &__logo {
         display: none;
       }
     }
   }
 
-  @media screen and (max-device-width: 640px) {
+  @media (max-width: 810px) {
+    &__wrapper {
+      width: 90%;
+    }
+  }
+
+  @media (max-width: 640px) {
     &__wrapper {
       width: 88%;
     }
   }
 }
 
-@media screen and (max-device-width: 640px) {
+@media (max-width: 640px) {
   .header {
     height: 72px;
   }
@@ -97,51 +104,62 @@ body {
   width: 100%;
   height: 65px;
   background-color: #3e4757;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: stretch;
 
-  &__item {
-    font-size: @main-font-size;
-    letter-spacing: 0.9px;
-    color: @light-text-color;
-    flex-shrink: 1;
-    align-items: center;
-    text-transform: uppercase;
-    font-weight: @main-font-weight;
-    margin: 0 33px;
-    //border-bottom: solid 3px #3e4757;
-    box-sizing: border-box;
-    text-wrap: none;
-    text-decoration: none;
-    //display: flex;
-    //flex-direction: column;
-    //align-content: stretch;
-    //justify-content: flex-end;
+  &__wrapper {
+    max-width: @max-body-width;
+    width: 76%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: stretch;
 
-    &:hover > &__title + &__underline {
-      width: 100%;
+    &__item {
+      font-size: @main-font-size;
+      letter-spacing: 0.9px;
+      color: @light-text-color;
+      flex-shrink: 1;
+      align-items: center;
+      text-transform: uppercase;
+      font-weight: @main-font-weight;
+      //border-bottom: solid 3px #3e4757;
+      box-sizing: border-box;
+      text-wrap: none;
+      text-decoration: none;
+      //display: flex;
+      //flex-direction: column;
+      //align-content: stretch;
+      //justify-content: flex-end;
+
+      &:hover > &__title + &__underline {
+        width: 100%;
+      }
+
+      &__underline {
+        background-color: @color-accent;
+        width: 0;
+        height: 3px;
+        position: relative;
+        top: -3px;
+        transition-property: width;
+        transition-duration: 0.2s;
+      }
+
+      &__title {
+        flex-grow: 1;
+        line-height: 65px;
+      }
     }
+  }
 
-    &__underline {
-      background-color: @color-accent;
-      width: 0;
-      height: 3px;
-      position: relative;
-      top: -3px;
-      transition-property: width;
-      transition-duration: 0.2s;
-    }
-
-    &__title {
-      flex-grow: 1;
-      line-height: 65px;
+  @media (max-width: 810px) {
+    &__wrapper {
+      width: 90%;
     }
   }
 }
 
-@media screen and (max-device-width: 640px) {
+@media (max-width: 640px) {
   .menu {
     display: none;
   }
@@ -150,7 +168,7 @@ body {
 .banner {
   position: relative;
   width: 100%;
-  min-width: @min-body-width;
+  //min-width: @min-body-width;
   height: 413px;
   background-image: linear-gradient(to right, #1489e7, #003e82);
   display: flex;
@@ -159,27 +177,29 @@ body {
 
   &__title-wrapper {
     height: 100%;
+    max-width: 50%;
 
     &__main-title {
-      width: 342px;
+      max-width: 342px;
       font-size: 50px;
       font-weight: 100;
       line-height: 1;
       color: @light-text-color;
-      margin: 91px 0 0 14px;
+      margin: 91px 30px 0 14px;
     }
 
     &__annotation {
-      width: 326px;
+      max-width: 326px;
       font-size: 16px;
       line-height: 1.5;
       color: @light-text-color;
-      margin: 18px 0 0 14px;
+      margin: 18px 30px 0 14px;
       font-weight: @main-font-weight;
     }
 
     &__button {
       display: block;
+      max-width: 212px;
       border-radius: @main-border-radius;
       background-color: @color-accent;
       padding: 19px 35px;
@@ -189,7 +209,7 @@ body {
       text-align: center;
       color: @dark-text-color;
       box-sizing: border-box;
-      margin: 20px 0 0 14px;
+      margin: 20px 30px 0 14px;
       font-weight: 400;
       cursor: pointer;
       transition-property: background-color;
@@ -201,9 +221,18 @@ body {
     }
   }
 
-  @media screen and (max-device-width: 640px) {
+  @media (max-width: 760px) {
+    &__title-wrapper {
+      &__main-title {
+        margin: 75px auto 0;
+      }
+    }
+  }
+
+  @media (max-width: 640px) {
     &__title-wrapper {
       width: 100%;
+      max-width: 100%;
       position: absolute;
       top: 0;
       left: 0;
@@ -214,6 +243,7 @@ body {
         text-align: center;
         margin: 26px auto 0;
         width: 74%;
+        max-width: 74%;
       }
 
       &__annotation {
@@ -222,10 +252,12 @@ body {
         text-align: center;
         margin: 7px auto 0;
         width: 78%;
+        max-width: 78%;
       }
 
       &__button {
         width: 78%;
+        max-width: 74%;
         margin: 141px auto 0;
       }
     }
@@ -243,7 +275,7 @@ body {
     }
   }
 
-  @media screen and (max-device-width: 640px) {
+  @media (max-width: 640px) {
     &__image-wrapper {
       width: 100%;
       position: absolute;
@@ -261,7 +293,7 @@ body {
   }
 }
 
-@media screen and (max-device-width: 640px) {
+@media (max-width: 640px) {
   .banner {
     min-width: 100%;
     height: 390px;
@@ -272,9 +304,8 @@ body {
 
 .main-container {
   background-color: @main-background-color;
-  min-width: @min-body-width;
+  max-width: @max-body-width;
   width: 76%;
-  max-width: 1080px;
   margin-left: auto;
   margin-right: auto;
 
@@ -288,7 +319,7 @@ body {
     margin: 82px auto 0;
   }
 
-  @media screen and (max-device-width: 640px) {
+  @media (max-width: 640px) {
     &__header {
       font-size: 30px;
       line-height: 1.2;
@@ -366,7 +397,7 @@ body {
       border: none;
     }
 
-    @media screen and (max-device-width: 640px) {
+    @media (max-width: 640px) {
       &__tag {
         font-size: 15px;
         max-width: 100%;
@@ -378,7 +409,7 @@ body {
     }
   }
 
-  @media screen and (max-device-width: 640px) {
+  @media (max-width: 640px) {
     &__tags-wrapper {
       margin: 24px auto 52px;
       padding: 18px;
@@ -386,7 +417,13 @@ body {
   }
 }
 
-@media screen and (max-device-width: 640px) {
+@media (max-width: 810px) {
+  .main-container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 640px) {
   .main-container {
     width: 88%;
     min-width: 88%;
@@ -394,7 +431,7 @@ body {
 }
 
 .fields-container {
-  width: 50%;
+  width: 65%;
   margin: 67px auto 0;
 
   &__data-field {
@@ -447,7 +484,7 @@ body {
         transition-duration: 0.5s;
       }
 
-      @media screen and (max-device-width: 640px) {
+      @media (max-width: 640px) {
         + .fields-container__data-field__label {
           font-size: 17px;
         }
@@ -522,7 +559,7 @@ body {
         z-index: 2;
       }
 
-      @media screen and (max-device-width: 640px) {
+      @media (max-width: 640px) {
         &__info {
           width: 200px;
           top: -58px;
@@ -544,7 +581,7 @@ body {
   }
 }
 
-@media screen and (max-device-width: 640px) {
+@media (max-width: 640px) {
   .fields-container {
     width: 100%;
     margin: 26px auto 0;
@@ -561,15 +598,15 @@ body {
 
 .choice-wrapper {
   margin-top: 27px;
-  width: 50%;
+  width: 65%;
   margin-right: auto;
   margin-left: auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
 
   &__choice-item {
-    width: 258px;
+    width: 48%;
     height: 66px;
     border-radius: @main-border-radius;
     background-color: @main-background-color;
@@ -622,7 +659,7 @@ body {
     }
   }
 
-  @media screen and (max-device-width: 640px) {
+  @media (max-width: 640px) {
     &__choice-item {
       width: 100%;
       margin-bottom: 24px;
@@ -630,7 +667,7 @@ body {
   }
 }
 
-@media screen and (max-device-width: 640px) {
+@media (max-width: 640px) {
   .choice-wrapper {
     width: 100%;
   }
@@ -655,7 +692,7 @@ body {
   }
 }
 
-@media screen and (max-device-width: 640px) {
+@media (max-width: 640px) {
   .send-button {
     margin-top: 24px;
   }
