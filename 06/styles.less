@@ -7,18 +7,12 @@
 @light-text-color: #fff;
 @main-background-color: #fff;
 @main-border-radius: 6px;
+@wrapper-width: 76%;
 
 @import url(//fonts.googleapis.com/css?family=Roboto:100,300,400,500);
 
 body {
-  //max-width: @max-body-width;
   font-family: "Roboto", sans-serif;
-}
-
-@media (max-width: 640px) {
-  body {
-    min-width: 100%;
-  }
 }
 
 .header {
@@ -27,7 +21,7 @@ body {
 
   &__wrapper {
     max-width: @max-body-width;
-    width: 76%;
+    width: @wrapper-width;
     height: 100%;
     margin: 0 auto;
     display: flex;
@@ -107,7 +101,7 @@ body {
 
   &__wrapper {
     max-width: @max-body-width;
-    width: 76%;
+    width: @wrapper-width;
     margin: 0 auto;
     display: flex;
     flex-flow: row nowrap;
@@ -122,14 +116,9 @@ body {
       align-items: center;
       text-transform: uppercase;
       font-weight: @main-font-weight;
-      //border-bottom: solid 3px #3e4757;
       box-sizing: border-box;
       text-wrap: none;
       text-decoration: none;
-      //display: flex;
-      //flex-direction: column;
-      //align-content: stretch;
-      //justify-content: flex-end;
 
       &:hover > &__title + &__underline {
         width: 100%;
@@ -168,7 +157,6 @@ body {
 .banner {
   position: relative;
   width: 100%;
-  //min-width: @min-body-width;
   height: 413px;
   background-image: linear-gradient(to right, #1489e7, #003e82);
   display: flex;
@@ -224,7 +212,7 @@ body {
   @media (max-width: 760px) {
     &__title-wrapper {
       &__main-title {
-        margin: 75px auto 0;
+        margin: 75px 14px 0;
       }
     }
   }
@@ -305,7 +293,7 @@ body {
 .main-container {
   background-color: @main-background-color;
   max-width: @max-body-width;
-  width: 76%;
+  width: @wrapper-width;
   margin-left: auto;
   margin-right: auto;
 
@@ -605,7 +593,7 @@ body {
   justify-content: space-between;
   flex-wrap: wrap;
 
-  &__choice-item {
+  &__item {
     width: 48%;
     height: 66px;
     border-radius: @main-border-radius;
@@ -627,23 +615,23 @@ body {
     &__radio-button {
       display: none;
 
-      &:checked + .choice-wrapper__choice-item__title {
+      &:checked + .choice-wrapper__item__title {
         color: @dark-text-color;
         opacity: 1;
       }
 
-      & + .choice-wrapper__choice-item__title {
+      & + .choice-wrapper__item__title {
         opacity: 0.6;
         color: #74a3c7;
         transition-property: color, opacity;
         transition-duration: 0.5s;
       }
 
-      &:checked + .choice-wrapper__choice-item__title::after {
+      &:checked + .choice-wrapper__item__title::after {
         background-image: url("images/selected.svg");
       }
 
-      & + .choice-wrapper__choice-item__title::after {
+      & + .choice-wrapper__item__title::after {
         content: '';
         width: 30px;
         height: 30px;
@@ -660,7 +648,7 @@ body {
   }
 
   @media (max-width: 640px) {
-    &__choice-item {
+    &__item {
       width: 100%;
       margin-bottom: 24px;
     }
@@ -697,6 +685,3 @@ body {
     margin-top: 24px;
   }
 }
-
-
-
