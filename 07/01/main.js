@@ -1,14 +1,14 @@
 const digitRegexp = new RegExp('[0-9]');
 
 function getDigitSequence(charSequence) {
-  alert(charSequence);
+  //alert(charSequence);
   const subLines = charSequence.split('');
   let result = '';
 
   for (let i = 0; i < subLines.length; ++i) {
     if (digitRegexp.test(subLines[i])) {
-      //if (i === 1 && subLines[i] !== '7') { result += '7'; } else { result += subLines[i]; }
-      result += subLines[i];
+      if (i === 1 && subLines[i] !== '7') { result += '7'; } else { result += subLines[i]; }
+      //result += subLines[i];
     }
   }
 
@@ -90,9 +90,9 @@ function telChangeHandler() {
     return;
   }
 
-  if (val.length > 17) {
+  if (val.length >= 17) {
     //alert('hi');
-    this.value = getMaskedNumber(getDigitSequence(val.substr(0, val.length - 1)));
+    this.value = getMaskedNumber(getDigitSequence(val.substr(0, val.length)));
     setCaretOnDelete(this, cursorPos);
     setCaretOnAdd(this, cursorPos);
 
