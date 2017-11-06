@@ -1,0 +1,64 @@
+@import url(//fonts.googleapis.com/css?family=Roboto:100,300,400);
+
+.banner {
+  position: relative;
+  width: 100%;
+  min-width: 1080px;
+  height: 413px;
+  background-image: linear-gradient(to right, #1489e7, #003e82);
+  display: flex;
+  justify-content: flex-start;
+}
+
+.title-wrapper {
+  height: 100%;
+}
+
+.image-wrapper {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.cards {
+  transform: scale(0.995);
+  margin: -87px 0 0 -35px;
+  float: right;
+}
+
+.main-title {
+  width: 342px;
+  font-family: Roboto, sans-serif;
+  font-size: 50px;
+  font-weight: 100;
+  line-height: 1;
+  color: #fff;
+  margin: 91px 0 0 14px;
+}
+
+.annotation {
+  width: 326px;
+  font-family: Roboto, sans serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #fff;
+  margin: 18px 0 0 14px;
+  font-weight: 300;
+}
+
+.button {
+  display: inline-block;
+  border-radius: 6px;
+  background-color: #ffdd2d;
+  padding: 19px 35px;
+  font-family: Roboto, sans-serif;
+  font-size: 17px;
+  line-height: 1.41;
+  text-align: center;
+  color: #333;
+  box-sizing: border-box;
+  margin: 20px 0 0 14px;
+  font-weight: 400;
+  cursor: pointer;
+}
+

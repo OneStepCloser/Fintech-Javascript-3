@@ -1,0 +1,37 @@
+@import url(//fonts.googleapis.com/css?family=Roboto:300);
+
+body {
+  min-width: 1080px;
+}
+
+.menu {
+  width: 100%;
+  height: 65px;
+  background-color: #3e4757;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.menu-item {
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.9px;
+  color: #fff;
+  display: flex;
+  flex-shrink: 1;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: 300;
+  margin: 0 33px;
+  border-bottom: solid 3px #3e4757;
+  box-sizing: border-box;
+  text-wrap: none;
+  text-decoration: none;
+}
+
+.menu-item:hover,
+.first-item {
+  border-bottom-color: #ffdd2d;
+}
