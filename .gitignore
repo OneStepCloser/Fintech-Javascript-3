@@ -1,5 +1,5 @@
 node_modules
 .idea
 .DS_store
-.log
+*.log
 package-lock.json
