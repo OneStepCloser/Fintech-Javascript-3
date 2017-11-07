@@ -4,23 +4,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet/less" type="text/css" href="./main.less" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js" ></script>
-    <script src="./main.js" ></script>
+
     <title>Задание 7.2</title>
 </head>
 <body>
-<h1>Обработка двойного клика </h1>
-<p>
-    Реализуйте функцию doubleClick(element, doubleClickHandler, timeDistance), которая обрабатывает
-    клики с помощью переданной вторым аргументом функции - обработчика, два последовательных клика считаются двойным,
-    если время между соответсвующими событиями меньше чем timeDistance(в миллисекундах).
-    <br>
-    Навесте обработчик на кнопку и добаляте элеметы в случае клика в список ниже:
-    <button>clike me</button>
-    <ol>
-        <li>2xClick - Fri Nov 03 2017 17:17:33 </li>
-        <li>2xClick - Fri Nov 03 2017 17:17:35 </li>
+<div class="wrapper">
+    <button class="wrapper__button">Just do it</button>
+    <h1 class="wrapper__header">Your double-clicks:</h1>
+    <ol class="wrapper__clicks">
     </ol>
-    Дизайн страницы - на ваш вкус.
-</p>
+</div>
+<script type="text/javascript" src="main.js"></script>
 </body>
 </html>
