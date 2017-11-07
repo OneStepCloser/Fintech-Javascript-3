@@ -15,6 +15,8 @@ function buttonClickHandler() {
     newItem.appendChild(document.createTextNode(now.toString()));
     list.appendChild(newItem);
     buttonClickHandler.prevTime = undefined;
+  } else {
+    buttonClickHandler.prevTime = now;
   }
 }
 
