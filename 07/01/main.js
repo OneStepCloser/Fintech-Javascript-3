@@ -72,13 +72,17 @@ function getCursorPos(input, val) {
 }
 
 function telChangeHandler() {
+  //alert(telChangeHandler.prevLength);
+  //alert(this.value.length);
   let val = this.value;
   let cursorPos = getCursorPos(this, val);
   let returnCaret = false;
-
+  // alert(val[cursorPos]);
   if (!digitRegexp.test(val[cursorPos])) {
+    //alert(val[cursorPos]);
     val = val.substr(0, cursorPos) + val.substr(cursorPos + 1, val.length);
     returnCaret = true;
+
   }
 
   if (!val[cursorPos + 1]) { cursorPos = -1; }
@@ -93,8 +97,20 @@ function telChangeHandler() {
   if (val.length >= 17) {
     //alert('hi');
     this.value = getMaskedNumber(getDigitSequence(val.substr(0, val.length)));
-    setCaretOnDelete(this, cursorPos);
-    setCaretOnAdd(this, cursorPos);
+    // setCaretOnDelete(this, cursorPos);
+    // setCaretOnAdd(this, cursorPos);
+    if (telChangeHandler.prevLength > this.value.length) {
+      //alert(2);
+      setCaretOnDelete(this, cursorPos);
+    }
+    else if (telChangeHandler.prevLength < this.value.length){
+      //alert(3);
+      setCaretOnAdd(this, cursorPos);
+    }
+    if (returnCaret) {
+      //alert(1);
+      remainCaretTheSame(this, cursorPos);
+    }
 
     const link = document.getElementById('link');
 
@@ -117,7 +133,7 @@ function telChangeHandler() {
     //alert(3);
     setCaretOnAdd(this, cursorPos);
   }
-  else if (returnCaret) {
+  if (returnCaret) {
     //alert(1);
     remainCaretTheSame(this, cursorPos);
   }
