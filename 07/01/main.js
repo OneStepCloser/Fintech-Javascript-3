@@ -97,24 +97,33 @@ function refreshInterface(val, cursorPos, returnCaret) {
   refreshInput(val, cursorPos, returnCaret);
 }
 
+function cancelPrefixAltering(input, cursorPos) {
+  if (cursorPos === 0 || cursorPos === 1) {
+    input.value = input.value.substr(0, cursorPos) + input.value.substr(cursorPos + 1, input.value.length);
+    if (input.value.length < 2) {
+      input.value = '+7';
+    }
+    input.setSelectionRange(3, 3);
+    return true;
+  }
+  return false;
+}
+
 function telChangeHandler() {
   let val = this.value;
   let cursorPos = getCursorPos(this, val);
   let returnCaret = false;
+
+  if (cancelPrefixAltering(this, cursorPos)) { return; }
 
   if (!digitRegexp.test(val[cursorPos])) {
     val = val.substr(0, cursorPos) + val.substr(cursorPos + 1, val.length);
     returnCaret = true;
   }
 
-  if (!val[cursorPos + 1]) { cursorPos = -1; }
+  cursorPos = val[cursorPos + 1] ? cursorPos : -1;
 
   if (!telChangeHandler.prevLength) { telChangeHandler.prevLength = 2; }
-
-  if (val.length < 2) {
-    this.value = '+7';
-    return;
-  }
 
   refreshInterface(val, cursorPos, returnCaret);
   telChangeHandler.prevLength = this.value.length;
