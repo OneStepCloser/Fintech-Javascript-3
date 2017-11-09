@@ -17,3 +17,5 @@ function throttle(time, callback) {
 }
 
 module.exports = { throttle };
+
+module.exports = { throttle };

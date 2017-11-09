@@ -1,25 +1,28 @@
 const distance = 500;
 const list = document.querySelector('.wrapper__clicks');
-
-function buttonClickHandler() {
-  if (!buttonClickHandler.prevTime) {
-    buttonClickHandler.prevTime = new Date();
-    return;
-  }
-
-  const now = new Date();
-
-  if (now - buttonClickHandler.prevTime <= distance) {
-    const newItem = document.createElement('li');
-
-    newItem.appendChild(document.createTextNode(now.toString()));
-    list.appendChild(newItem);
-    buttonClickHandler.prevTime = undefined;
-  } else {
-    buttonClickHandler.prevTime = now;
-  }
-}
-
 const button = document.querySelector('.wrapper__button');
 
-button.addEventListener('click', buttonClickHandler);
+function addItemToList() {
+  const newItem = document.createElement('li');
+
+  newItem.appendChild(document.createTextNode(new Date().toString()));
+  list.appendChild(newItem);
+}
+
+function doubleClick(element, doubleClickHandler, timeDistance) {
+  let waitForDouble = false;
+
+  const handler = () => {
+    if (waitForDouble) {
+      doubleClickHandler();
+      waitForDouble = false;
+    } else {
+      waitForDouble = true;
+      setTimeout(() => { waitForDouble = false; }, timeDistance);
+    }
+  };
+
+  element.addEventListener('click', handler);
+}
+
+doubleClick(button, addItemToList, distance);
