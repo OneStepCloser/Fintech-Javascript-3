@@ -1,4 +1,48 @@
-a {
-  padding: 2px;
-  border: 1px solid black;
+@primary-background: #9a8ba8;
+@primary-outer-light: rgba(134, 159, 168, 0.4);
+
+@import url(//fonts.googleapis.com/css?family=Roboto:300);
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: @primary-background;
 }
+
+.wrapper {
+  width: 50%;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 50px auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#wrapper__phone {
+  display: block;
+  font-size: 20px;
+  margin: 10px auto 0;
+  padding: 7px;
+  border: solid @primary-background 1px;
+  border-radius: 6px;
+  outline: none;
+  transition-property: box-shadow;
+  transition-duration: 0.2s;
+
+  &:focus {
+    box-shadow: 0 0 10px @primary-outer-light;
+  }
+}
+
+a#link {
+  display: block;
+  text-align: center;
+  margin: 30px auto 10px;
+  color: #2794a9;
+  transition-property: color;
+  transition-duration: 0.2s;
+
+  &:hover {
+    color: #2ba3ba;
+  }
+}
+

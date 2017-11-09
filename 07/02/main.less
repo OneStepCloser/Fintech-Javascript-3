@@ -1,4 +1,50 @@
-button {
-  padding: 2px;
-  border: 1px solid black;
+@primary-background: #9a8ba8;
+@primary-outer-light: rgba(134, 159, 168, 0.4);
+
+@import url(//fonts.googleapis.com/css?family=Roboto:100,300);
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: @primary-background;
+}
+
+.wrapper {
+  width: 50%;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 50px auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+  &__header {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__button {
+    display: block;
+    background-color: darkseagreen;
+    color: white;
+    font-size: 40px;
+    font-weight: 100;
+    padding: 20px;
+    margin: 40px auto;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    transition-property: background-color;
+    transition-duration: 0.5s;
+
+    &:hover {
+      background-color: #a0d2a0;
+      transition-property: background-color;
+      transition-duration: 0.5s;
+    }
+  }
+
+  &__clicks {
+    display: block;
+    margin: 20px auto 40px;
+    font-size: 17px;
+  }
 }
