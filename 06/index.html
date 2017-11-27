@@ -2,28 +2,173 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet/less" type="text/css" href="./main.less" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js" ></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet/less" type="text/css" href="styles.less"/>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js"></script>
     <title>Задание 6.1</title>
 </head>
 <body>
-<h1>Сверстать полную страницу (без футера).</h1>
-<h4>Макеты:</h4>
-<ul>
-    <li><a href="https://app.zeplin.io/project/58a307271a9f6d513890adc8/screen/58a307604687f0394b3ba039">Desktop 1</a></li>
-    <li><a href="https://app.zeplin.io/project/58a307271a9f6d513890adc8/screen/58a3075a4ec334e848d7f333">Desktop 2</a></li>
-    <li><a href="https://app.zeplin.io/project/58a307271a9f6d513890adc8/screen/58a3076d2fc6273f38fc51c5">Mobile 1</a></li>
-</ul>
-<h4>Особенности:</h4>
-<ul>
-    <li>Брейкпойнт для мобильной: 640px</li>
-    <li>До брейкпойнта верстка ломаться не должна, если ломается и никак иначе не избежать, ввести промежуточный брейкпойнт.</li>
-    <li>Использоваться БЭМ-нэйминг для классов.</li>
-    <li>Использовать less.</li>
-    <li>Повторяющиеся размера, цвета вынести в переменные.</li>
-    <li>Для элементов, у которых могут меняться состояние (цвет текста, бордер, фон, размер, позиция и тп), добавить transition.</li>
-    <li>Тултип также должен появляться с анимацией.</li>
-    <li>Для иконок использовать svg.</li>
-</ul>
+
+<div class="header">
+    <div class="header__wrapper">
+        <img class="header__wrapper__logo-mobile" src="images/logo-mobile.svg" alt="Тинькофф">
+        <img class="header__wrapper__logo" src="images/header-logo.svg" alt="Тинькофф">
+        <div class="header__wrapper__telephone">8 800 555-11-22</div>
+        <img class="header__wrapper__hamburger" src="images/hamburger.svg" alt="Меню">
+    </div>
+</div>
+
+<div class="menu">
+    <div class="menu__wrapper">
+    <a class="menu__wrapper__item" href="#">
+        <div class="menu__wrapper__item__title">Карты</div>
+        <div class="menu__wrapper__item__underline"></div>
+    </a>
+    <a class="menu__wrapper__item" href="#">
+        <div class="menu__wrapper__item__title">Вклады</div>
+        <div class="menu__wrapper__item__underline"></div>
+    </a>
+    <a class="menu__wrapper__item" href="#">
+        <div class="menu__wrapper__item__title">Платежи и переводы</div>
+        <div class="menu__wrapper__item__underline"></div>
+    </a>
+    <a class="menu__wrapper__item" href="#">
+        <div class="menu__wrapper__item__title">Бонусы</div>
+        <div class="menu__wrapper__item__underline"></div>
+    </a>
+    <a class="menu__wrapper__item" href="#">
+        <div class="menu__wrapper__item__title">Страхование</div>
+        <div class="menu__wrapper__item__underline"></div>
+    </a>
+    <a class="menu__wrapper__item" href="#">
+        <div class="menu__wrapper__item__title">О банке</div>
+        <div class="menu__wrapper__item__underline"></div>
+    </a>
+    </div>
+</div>
+
+<div class="banner">
+    <div class="banner__image-wrapper">
+        <img alt="Different cards" src="images/cards.png" class="banner__image-wrapper__cards">
+    </div>
+    <div class="banner__title-wrapper">
+        <div class="banner__title-wrapper__main-title">
+            Карты для вас прямо сейчас
+        </div>
+        <div class="banner__title-wrapper__annotation">
+            Выбирайте карту, пользуйтесь<br>удобными сервисами
+        </div>
+        <div class="banner__title-wrapper__button">Оформить заявку</div>
+    </div>
+</div>
+
+<div class="main-container">
+    <h2 class="main-container__header">Любые категории платежей</h2>
+
+    <div class="main-container__tags-wrapper">
+        <div class="main-container__tags-wrapper__tag">
+            <div class="main-container__tags-wrapper__tag__tag-text">
+                <div class="main-container__tags-wrapper__tag__tag-text__inside-tag-text">Кафе</div>
+            </div>
+            <div class="main-container__tags-wrapper__tag__delete-button"></div>
+        </div>
+        <div class="main-container__tags-wrapper__tag">
+            <div class="main-container__tags-wrapper__tag__tag-text">
+                <div class="main-container__tags-wrapper__tag__tag-text__inside-tag-text">Интернет</div>
+            </div>
+            <div class="main-container__tags-wrapper__tag__delete-button"></div>
+        </div>
+        <div class="main-container__tags-wrapper__tag">
+            <div class="main-container__tags-wrapper__tag__tag-text">
+                <div class="main-container__tags-wrapper__tag__tag-text__inside-tag-text">Телефон</div>
+            </div>
+            <div class="main-container__tags-wrapper__tag__delete-button"></div>
+        </div>
+        <div class="main-container__tags-wrapper__tag">
+            <div class="main-container__tags-wrapper__tag__tag-text">
+                <div class="main-container__tags-wrapper__tag__tag-text__inside-tag-text">Авто</div>
+            </div>
+            <div class="main-container__tags-wrapper__tag__delete-button"></div>
+        </div>
+        <div class="main-container__tags-wrapper__tag">
+            <div class="main-container__tags-wrapper__tag__tag-text">
+                <div class="main-container__tags-wrapper__tag__tag-text__inside-tag-text">ЖКХ</div>
+            </div>
+            <div class="main-container__tags-wrapper__tag__delete-button"></div>
+        </div>
+        <div class="main-container__tags-wrapper__tag">
+            <div class="main-container__tags-wrapper__tag__tag-text">
+                <div class="main-container__tags-wrapper__tag__tag-text__inside-tag-text">Одежда и обувь</div>
+            </div>
+            <div class="main-container__tags-wrapper__tag__delete-button"></div>
+        </div>
+        <div class="main-container__tags-wrapper__tag">
+            <div class="main-container__tags-wrapper__tag__tag-text">
+                <div class="main-container__tags-wrapper__tag__tag-text__inside-tag-text">Супермаркеты, гастрономы,
+                    универмаги и к
+                </div>
+            </div>
+            <div class="main-container__tags-wrapper__tag__delete-button"></div>
+        </div>
+        <input class="main-container__tags-wrapper__new-tag" title="New tag"/>
+
+    </div>
+
+    <h2 class="main-container__header_small">Заполните несколько простых полей</h2>
+
+    <div class="fields-container">
+        <div class="fields-container__data-field">
+            <div class="fields-container__data-field__arrow"></div>
+            <input id="FIO" class="fields-container__data-field__input fields-container__data-field__input_arrow"
+                   required>
+            <label for="FIO" class="fields-container__data-field__label">ФИО</label>
+        </div>
+
+
+        <div class="fields-container__data-field">
+            <div class="fields-container__data-field__incorrect"></div>
+            <input id="city" class="fields-container__data-field__input fields-container__data-field__input_incorrect">
+            <label for="city" class="fields-container__data-field__label">Город проживания</label>
+        </div>
+
+        <div class="fields-container__error-text">Для заполнения этого поля недопустимо использовать буквы латинского
+            алфавита
+        </div>
+
+        <div class="fields-container__data-field">
+            <input id="telephone" class="fields-container__data-field__input" required>
+            <label for="telephone" class="fields-container__data-field__label">Мобильный телефон</label>
+        </div>
+        <div class="fields-container__data-field">
+            <div class="fields-container__data-field__question">
+            <span class="fields-container__data-field__question__info">
+                Ваши данные замаскированы в целях безопасности. Для изменения информации с вами свяжется оператор колл-центра.
+            </span>
+            </div>
+            <input id="email" class="fields-container__data-field__input fields-container__data-field__input_question" required>
+            <label for="email" class="fields-container__data-field__label">Электронная почта</label>
+        </div>
+    </div>
+
+        <h3 class="choose-header">
+            Выберите это или другое
+        </h3>
+        <div class="choice-wrapper">
+            <div class="choice-wrapper__item">
+                <input name="radio" type="radio" class="choice-wrapper__item__radio-button" id="radio1" checked/>
+                <label for="radio1" class="choice-wrapper__item__title">Это</label>
+            </div>
+            <div class="choice-wrapper__item">
+                <input name="radio" type="radio" class="choice-wrapper__item__radio-button" id="radio2"/>
+                <label for="radio2" class="choice-wrapper__item__title">Другое</label>
+            </div>
+        </div>
+        <div class="send-button">
+            Отправить
+        </div>
+    </div>
+
 </body>
 </html>
